@@ -1,0 +1,31 @@
+{
+  "name": "rss-url-finder",
+  "version": "1.0.0",
+  "description": " A javascript/typescript library to search RSS feed via URL or HTML body ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.ts",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cr0wg4n/rss-url-finder.git"
+  },
+  "keywords": [
+    "rss",
+    "rss-finder",
+    "feeds"
+  ],
+  "author": "Mauricio Matias <cr0wg4n>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cr0wg4n/rss-url-finder/issues"
+  },
+  "homepage": "https://github.com/cr0wg4n/rss-url-finder#readme",
+  "dependencies": {
+    "node-html-parser": "^6.1.5"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}
