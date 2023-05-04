@@ -75,6 +75,3 @@ function findRss(html: HTMLElement): RssSource[]{
   
   return rssFeed
 }
-
-
-guessRSSfromUrl('https://www.lostiempos.com/')
