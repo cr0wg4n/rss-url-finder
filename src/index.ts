@@ -57,7 +57,8 @@ export async function getRssUrlsFromUrl(
   options?: RequestInit
 ): Promise<RssSource[]> {
   let body = await getHtmlBody(url, options)
-  return getRssUrlsFromHtmlBody(body)
+  const guessRssSources: RssSource[] = await guessRSSfromUrl(url)
+  return [...getRssUrlsFromHtmlBody(body), ...guessRssSources]
 }
 
 function findRss(html: HTMLElement): RssSource[]{
