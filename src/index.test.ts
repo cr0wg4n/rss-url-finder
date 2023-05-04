@@ -27,7 +27,7 @@ describe('get RSS from URLs', () => {
   URLs.forEach((url) => {
     test(url, async () => {
       const rss = await getRssUrlsFromUrl(url)
-      console.log(rss)
+      // console.log(rss)
       expect(rss.length).toBeGreaterThan(0)
     })
   })

@@ -1,4 +1,3 @@
-
 export interface RssSource {
   name?: string,
   url: string

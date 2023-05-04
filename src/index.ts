@@ -36,7 +36,7 @@ export async function guessRSSfromUrl(url: string): Promise<RssSource[]> {
       for (const type of TYPES) {
         if (contentType?.includes(type)) {
           rssFeed.push(newRssSource({
-            name: guessUrl,
+            name: (new URL(guessUrl)).hostname,
             url: guessUrl
           }))
         }
