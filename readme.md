@@ -1,11 +1,11 @@
 # RSS URL Finder
 
-> A javascript/typescript library to search RSS feed via URL or HTML body 
+A javascript/typescript library to search RSS feed via URL or HTML body 
 
 
 ## Installation
 
-> ⚠️ For now, is only compatible with node >=18 vesions
+> ⚠️ For now, is only compatible with node >=18 versions
 ```sh
 npm install rss-url-finder
 # or
@@ -15,15 +15,15 @@ yarn add rss-url-finder
 ```
 
 ## How to use
+
 ```js
 import { getRssUrlsFromHtmlBody, getRssUrlsFromUrl } from 'rss-url-finder'
 
 // If you need to search from URL
-getRssUrlsFromUrl('https://cr0wg4n.medium.com/').then((
-  rssUrls
-)=>{
-  console.log(rssUrls)
-})
+getRssUrlsFromUrl('https://cr0wg4n.medium.com/')
+  .then((rssUrls) => {
+    console.log(rssUrls)
+  })
 // Result: 
 // [ 
 //   { 
@@ -70,7 +70,7 @@ console.log(rssUrls)
 ```
 
 
-Feel free to contribute in the [repository](https://github.com/cr0wg4n/rss-url-finder)
+> Feel free to contribute to this [repository](https://github.com/cr0wg4n/rss-url-finder)
 
 
-> Made with ❤️ by [cr0wg4n](cr0wg4n.github.io)
+Made with ❤️ by [cr0wg4n](cr0wg4n.github.io)
