@@ -1,4 +1,5 @@
 import { RssSource, TYPES } from "./types";
+import type { HTMLElement } from 'node-html-parser'
 
 export function newRssSource({name, url}: RssSource): RssSource {
   return {
@@ -42,4 +43,18 @@ export async function guessRSSfromUrl(url: string): Promise<RssSource[]> {
     }
   }
   return rssFeed
+}
+
+export function getDomainName(html: HTMLElement): string | undefined {
+  let domain = html.querySelector(`link[rel="canonical"]`)?.attrs.href
+  if (domain) {
+    try {
+      const { hostname, protocol } = new URL(domain)
+      domain = `${protocol}//${hostname}`
+      return domain 
+    } catch (error) {
+      return undefined    
+    }
+  }
+  return undefined
 }
