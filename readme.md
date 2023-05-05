@@ -38,6 +38,7 @@ const rssUrls = getRssUrlsFromHtmlBody(`
 <head>
   <meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Dev-Academy.com - Web security | Testing & automation | Application architecture" type="application/atom+xml">
   <link rel="alternate" href="/rss2.xml" title="Dev-Academy.com - Web security | Testing & automation | Application architecture" type="application/rss+xml">
+  <link rel="canonical" href="https://dev-academy.com/">
 </head>
 </figure>
 <header>
@@ -47,7 +48,7 @@ const rssUrls = getRssUrlsFromHtmlBody(`
 </header>
 <body>
 ...... AND EXAMPLE OF HTML ...........
-<script src="https://my.asdasdasd23123.com/2323323asdasdasdasdd.js" data-cookieconsent="ignore" charset="utf-8" async="async"></script>
+<script src="https://my.hellobar.com/3211232132.js" data-cookieconsent="ignore" charset="utf-8" async="async"></script>
 </body>
 </html>
 `)
