@@ -1,3 +1,5 @@
 src
 jest.config.ts
 example
+*.test.d.ts
+*.test.ts

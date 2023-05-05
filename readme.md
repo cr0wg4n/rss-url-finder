@@ -2,7 +2,6 @@
 
 A javascript/typescript library to search RSS feed via URL or HTML body 
 
-
 ## Installation
 
 > ⚠️ For now, is only compatible with node >=18 versions

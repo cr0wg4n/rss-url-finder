@@ -1,8 +1,8 @@
 import {describe, expect, test} from '@jest/globals'
-import { generateGuesses, getRssUrlsFromHtmlBody, getRssUrlsFromUrl } from './index'
+import { getRssUrlsFromHtmlBody, getRssUrlsFromUrl } from './index'
+import { generateGuesses } from './utils'
 
 jest.setTimeout(1_000_000_000)
-
 
 describe('URLS guess generator', () => {
   const URLs = [
