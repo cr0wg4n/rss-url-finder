@@ -1,10 +1,10 @@
 lockfileVersion: 5.4
 
 specifiers:
-  rss-url-finder: ^0.0.3
+  rss-url-finder: ^0.0.4
 
 dependencies:
-  rss-url-finder: 0.0.3
+  rss-url-finder: 0.0.4
 
 packages:
 
@@ -77,8 +77,8 @@ packages:
       boolbase: 1.0.0
     dev: false
 
-  /rss-url-finder/0.0.3:
-    resolution: {integrity: sha512-7yWz3dxt9wgoFziMsFunVaWQkIkoevYDVAdtQfhcL59fntWCuSmld/nj1SjPVFSe5H4dES3HzovNSAlPYvkPRg==}
+  /rss-url-finder/0.0.4:
+    resolution: {integrity: sha512-KoWKyQ3IdeoTRZt7GGhlAxEPHO523/uEIY6OKnPjqAe7vgDC37W40td7dKH56uY4wZ4LII0eNzbaCNZp2/tgag==}
     engines: {node: '>= 18.0.0'}
     dependencies:
       node-html-parser: 6.1.5

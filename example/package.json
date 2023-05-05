@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "rss-url-finder": "^0.0.3"
+    "rss-url-finder": "^0.0.4"
   }
 }

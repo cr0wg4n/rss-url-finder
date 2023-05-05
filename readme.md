@@ -57,11 +57,11 @@ console.log(rssUrls)
 // [
 //   {
 //     name: 'Dev-Academy.com - Web security | Testing & automation | Application architecture',
-//     url: '/rss2.xml'
+//     url: 'https://dev-academy.com/rss2.xml'
 //   },
 //   {
 //     name: 'Dev-Academy.com - Web security | Testing & automation | Application architecture',
-//     url: '/atom.xml'
+//     url: 'https://dev-academy.com/atom.xml'
 //   }
 // ]
 
