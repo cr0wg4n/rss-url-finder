@@ -1,6 +1,11 @@
 import { RssSource, TYPES } from "./types";
 import type { HTMLElement } from 'node-html-parser'
 
+function getBaseUrl(url: string) {
+  const { protocol, hostname } = new URL(url)
+  return `${protocol}//${hostname}`
+}
+
 export function newRssSource({name, url}: RssSource): RssSource {
   return {
     name: name?.trim(),
@@ -56,5 +61,21 @@ export function getDomainName(html: HTMLElement): string | undefined {
       return undefined    
     }
   }
+  return undefined
+}
+
+export async function analyzeSitemap(url: string): Promise<RssSource | undefined> {
+  const baseUrl = getBaseUrl(url)
+  const robotsUrl = (new URL('robots.txt', baseUrl)).toString()
+  const text = await getHtmlBody(robotsUrl)
+  const existsSitemap = /^Sitemap: (.+)$/s.exec(text)
+
+  if(existsSitemap) {
+    return {
+      name: 'Sitemap',
+      url: existsSitemap[1].trim(),
+    }
+  }
+
   return undefined
 }
