@@ -7,7 +7,7 @@ describe('get RSS from URLs', () => {
   const URLs = [
     'https://dev-academy.com/blog',
     'https://cr0wg4n.medium.com/',
-    'https://www.lostiempos.com/'
+    'https://www.lostiempos.com/',
   ]
   URLs.forEach((url) => {
     test(url, async () => {

@@ -1,9 +1,13 @@
 import { RssSource, TYPES } from "./types";
 import type { HTMLElement } from 'node-html-parser'
 
-function getBaseUrl(url: string) {
-  const { protocol, hostname } = new URL(url)
-  return `${protocol}//${hostname}`
+function getBaseUrl(url: string): string | undefined {
+  try {
+    const { protocol, hostname } = new URL(url)
+    return `${protocol}//${hostname}` 
+  } catch (error) {
+    return undefined
+  }
 }
 
 export function newRssSource({name, url}: RssSource): RssSource {
@@ -22,10 +26,12 @@ export function generateGuesses(url: string): string[] {
   const urls: string[] = []
   const commonUrls = ['/feed', '/rss', '/rss.xml', '/feed.xml'];
 
-  const { hostname, protocol } = new URL(url)
+  const baseUrl = getBaseUrl(url)
+
   for (const url of commonUrls) {
-    urls.push(`${protocol}//${hostname}${url}`)
+    urls.push(`${baseUrl}${url}`)
   }
+
   return urls
 }
 
@@ -51,16 +57,12 @@ export async function guessRSSfromUrl(url: string): Promise<RssSource[]> {
 }
 
 export function getDomainName(html: HTMLElement): string | undefined {
-  let domain = html.querySelector(`link[rel="canonical"]`)?.attrs.href
-  if (domain) {
-    try {
-      const { hostname, protocol } = new URL(domain)
-      domain = `${protocol}//${hostname}`
-      return domain 
-    } catch (error) {
-      return undefined    
-    }
-  }
+  let baseUrl = html.querySelector(`link[rel="canonical"]`)?.attrs.href
+  if(baseUrl) return getBaseUrl(baseUrl)
+
+  baseUrl = html.querySelector(`meta[property="og:url"]`)?.attrs.content
+  if(baseUrl) return getBaseUrl(baseUrl)
+
   return undefined
 }
 
