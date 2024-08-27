@@ -1,4 +1,5 @@
-import { RssSource, TYPES } from "./types";
+import { COMMON_URLS, RSS_MIME_TYPES, RssSource } from "./types";
+
 import type { HTMLElement } from 'node-html-parser'
 
 function getBaseUrl(url: string): string | undefined {
@@ -24,11 +25,9 @@ export async function getHtmlBody(url: string, options?: RequestInit) {
 
 export function generateGuesses(url: string): string[] {
   const urls: string[] = []
-  const commonUrls = ['/feed', '/rss', '/rss.xml', '/feed.xml'];
-
   const baseUrl = getBaseUrl(url)
 
-  for (const url of commonUrls) {
+  for (const url of COMMON_URLS) {
     urls.push(`${baseUrl}${url}`)
   }
 
@@ -42,8 +41,8 @@ export async function guessRSSfromUrl(url: string): Promise<RssSource[]> {
     const request = await fetch(guessUrl, { method:'HEAD' })
     if (request.status == 200) {
       const contentType = request.headers.get('content-type')?.toLowerCase()
-      for (const type of TYPES) {
-        if (contentType?.includes(type)) {
+      for (const mimeType of RSS_MIME_TYPES) {
+        if (contentType?.includes(mimeType)) {
           rssFeed.push(newRssSource({
             name: (new URL(guessUrl)).hostname,
             url: guessUrl

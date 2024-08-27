@@ -1,7 +1,8 @@
-import { parse } from 'node-html-parser'
-import type { HTMLElement } from 'node-html-parser'
-import { RssSource, TYPES } from './types'
+import { RSS_MIME_TYPES, RssSource } from './types'
 import { getDomainName, getHtmlBody, guessRSSfromUrl, newRssSource } from './utils'
+
+import type { HTMLElement } from 'node-html-parser'
+import { parse } from 'node-html-parser'
 
 export function getRssUrlsFromHtmlBody(body: string): RssSource[] {
   const html = parse(body)
@@ -23,7 +24,7 @@ export async function getRssUrlsFromUrl(
 
 function findRss(html: HTMLElement): RssSource[]{
   const rssSources: RssSource[] = []
-  for (const type of TYPES) {
+  for (const type of RSS_MIME_TYPES) {
     const domain = getDomainName(html)
     for (const search of html.querySelectorAll(`*[type="${type}"]`)) {
       const { title, href } = search.attrs

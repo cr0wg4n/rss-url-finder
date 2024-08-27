@@ -5,14 +5,13 @@ jest.setTimeout(1_000_000_000)
 
 describe('get RSS from URLs', () => {
   const URLs = [
-    'https://dev-academy.com/blog',
+    'https://dev-academy.com/',
     'https://cr0wg4n.medium.com/',
     'https://www.lostiempos.com/',
   ]
   URLs.forEach((url) => {
     test(url, async () => {
       const rss = await getRssUrlsFromUrl(url)
-      // console.log(rss)
       expect(rss.length).toBeGreaterThan(0)
     })
   })

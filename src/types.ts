@@ -3,7 +3,7 @@ export interface RssSource {
   url: string
 }
 
-export const TYPES = [
+export const RSS_MIME_TYPES = [
   'application/rss+xml',
   'application/atom+xml',
   'application/rdf+xml',
@@ -16,4 +16,8 @@ export const TYPES = [
   'text/rss',
   'text/atom',
   'text/rdf'
+]
+
+export const COMMON_URLS = [
+  '/feed', '/rss', '/rss.xml', '/feed.xml'
 ]

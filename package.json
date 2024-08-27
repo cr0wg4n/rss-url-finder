@@ -1,11 +1,11 @@
 {
   "name": "rss-url-finder",
-  "version": "0.0.5-1",
+  "version": "0.0.5",
   "description": " A javascript/typescript library to search RSS feed via URL or HTML body ",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "start": "ts-node ./src/index.ts",
+    "dev": "ts-node ./src/index.ts",
     "build": "tsc",
     "test": "jest"
   },
