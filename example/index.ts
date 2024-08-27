@@ -1,15 +1,16 @@
-import { getRssUrlsFromHtmlBody, getRssUrlsFromUrl } from 'rss-url-finder'
+import {
+  getRssUrlsFromHtmlBody,
+  getRssUrlsFromUrl
+} from 'rss-url-finder'
 // import { getRssUrlsFromHtmlBody, getRssUrlsFromUrl } from '../src/index'
 
 getRssUrlsFromUrl('https://cr0wg4n.medium.com/').then((
   rssUrls
-)=>{
+) => {
   console.log(rssUrls)
 })
 
-getRssUrlsFromUrl('https://tailwindcss.com/docs/transform-origin').then((
-  rssUrls
-)=>{
+getRssUrlsFromUrl('https://tailwindcss.com/docs/transform-origin').then((rssUrls) => {
   console.log(rssUrls)
 })
 

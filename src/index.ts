@@ -1,8 +1,20 @@
-import { RSS_MIME_TYPES, RssSource } from './types'
-import { getDomainName, getHtmlBody, guessRSSfromUrl, newRssSource } from './utils'
+import {
+  RSS_MIME_TYPES,
+  RssSource
+} from './types'
+import {
+  getDomainName,
+  getHtmlBody,
+  guessRSSfromUrl,
+  newRssSource
+} from './utils'
 
-import type { HTMLElement } from 'node-html-parser'
-import { parse } from 'node-html-parser'
+import type {
+  HTMLElement
+} from 'node-html-parser'
+import {
+  parse
+} from 'node-html-parser'
 
 export function getRssUrlsFromHtmlBody(body: string): RssSource[] {
   const html = parse(body)
@@ -10,10 +22,10 @@ export function getRssUrlsFromHtmlBody(body: string): RssSource[] {
 }
 
 export async function getRssUrlsFromUrl(
-  url: string, 
+  url: string,
   options?: RequestInit
 ): Promise<RssSource[]> {
-  let body = await getHtmlBody(url, options)
+  const body = await getHtmlBody(url, options)
   const guessRssSources: RssSource[] = await guessRSSfromUrl(url)
 
   return [
@@ -22,19 +34,21 @@ export async function getRssUrlsFromUrl(
   ]
 }
 
-function findRss(html: HTMLElement): RssSource[]{
+function findRss(html: HTMLElement): RssSource[] {
   const rssSources: RssSource[] = []
   for (const type of RSS_MIME_TYPES) {
     const domain = getDomainName(html)
     for (const search of html.querySelectorAll(`*[type="${type}"]`)) {
       const { title, href } = search.attrs
 
-      if(domain){
+      if (domain) {
         let url = ''
         try {
           new URL(href)
           url = href
-        } catch (error) {
+        }
+        catch (error) {
+          console.log(error)
           url = new URL(href, domain).toString()
         }
 
@@ -42,7 +56,8 @@ function findRss(html: HTMLElement): RssSource[]{
           name: title,
           url
         }))
-      } else {
+      }
+      else {
         rssSources.push(newRssSource({
           name: title,
           url: href
@@ -50,6 +65,6 @@ function findRss(html: HTMLElement): RssSource[]{
       }
     }
   }
-  
+
   return rssSources
 }

@@ -1,5 +1,12 @@
-import {describe, expect, test} from '@jest/globals'
-import { generateGuesses } from './utils'
+import {
+  describe,
+  expect,
+  test
+} from '@jest/globals'
+
+import {
+  generateGuesses
+} from './utils'
 
 jest.setTimeout(1_000_000_000)
 
@@ -9,10 +16,10 @@ describe('URLS guess generator', () => {
     'https://www.lavoz.com.ar/politica/la-recaudacion-de-cordoba-no-se-sostiene-y-pierde-con-la-inflacion/'
   ]
   URLs.forEach((url) => {
-    test(url, ()=>{
+    test(url, () => {
       const urls = generateGuesses(url)
       // console.log(urls)
       expect(urls.length).toBeGreaterThan(0)
     })
   })
-}) 
+})
